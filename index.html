@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>To do</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+</head>
+<body>
+    <div class="wrapper">
+       
+        <form class="form">
+            <input class="input-task" type="text" placeholder="Add a new task">
+            <button class="add-btn"><i class="fa solid fa-plus"></i></button>
+             <div class="error-msg show-error">Ops, you forgot to type in a task!</div>
+            <ul class="output">
+                <!-- <li>
+                    <span class="task">Task 1</span>
+                    <button class="check-btn"><i class="fa-solid fa-check"></i></button>
+                    <button class="delete-btn"><i class="fa-solid fa-trash-can"></i></button>
+                </li> -->
+                
+            </ul>
+            
+            <div class="modal">
+                <div class="modal-content">
+                    <h1>You need to complete your task</h1>
+                    <button class="close-btn"><i class="fa-solid fa-xmark"></i></button>
+                </div>
+
+            </div>
+        </form>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
