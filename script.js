@@ -7,7 +7,7 @@ const modal = document.querySelector('.modal');
 const closeBtn = document.querySelector('.close-btn');
 
 let tasks = [];
-// Create the elents for tasks
+// Create the elements for tasks
 function createTaskElement(taskTitle, taskId) {
     const task = document.createElement('div');
     task.classList.add('task');
@@ -18,16 +18,17 @@ function createTaskElement(taskTitle, taskId) {
     newTask.setAttribute('id', `task${taskId}`);
     task.appendChild(newTask);
 
-    // Add the check button
+    // Add check button
     const checkBtn = document.createElement('button');
     checkBtn.classList.add('check-btn');
+    checkBtn.type = 'button';
     checkBtn.innerHTML = '<i class="fa-solid fa-check"></i>';
     task.appendChild(checkBtn);
 
+    checkBtn.setAttribute('aria-label', 'Check task')
+
 
     checkBtn.addEventListener('click', async (e) => {
-        e.preventDefault();
-
        
         const taskIndex = tasks.findIndex(t => t._id === taskId);
     
@@ -65,24 +66,24 @@ function createTaskElement(taskTitle, taskId) {
 
         const deleteBtn = document.createElement('button');
         deleteBtn.classList.add('delete-btn');
+        // deleteBtn.type = 'button';
         deleteBtn.innerHTML = '<i class="fa-solid fa-trash-can"></i>';
         task.appendChild(deleteBtn);
 
-        deleteBtn.addEventListener('click', async (e) => {
-        e.preventDefault();
+        deleteBtn.setAttribute('aria-label', 'Delete task')
 
-        const taskIndex = tasks.findIndex(t => t._id === taskId);
+        deleteBtn.addEventListener('click', async (e) => {
+        
+
+        const taskIndex = tasks.findIndex(task => task._id === taskId);
        
         closeBtn.addEventListener('click', function (e) {
-            e.preventDefault();
             modal.style.display = 'none';
         });
         
         window.addEventListener('click', function (e) {
             if (e.target === modal) {
                 modal.style.display = 'none';
-
-                
             }
         });
 
@@ -102,14 +103,9 @@ function createTaskElement(taskTitle, taskId) {
         if (res.status === 200 ) {
             console.log('Successfully deleted task');
             task.remove();
-        } else {
-            console.log('Error deleting task');
-        }
-        console.log(res);
-    
-  
+        } 
+            
         task.remove();
-        console.log(taskId);
     });
 
         return task;
@@ -143,12 +139,9 @@ function createTaskElement(taskTitle, taskId) {
         }),
     });
     if (response.status !== 201) {
-        console.log('Error fetching data');
         return;
     }
     const data = await response.json();
-    
-    console.log(response);
     
     tasks.push(data);
     // Call createTaskList after adding the task to the tasks array
@@ -172,7 +165,6 @@ function createTaskElement(taskTitle, taskId) {
         return;
     }
     const data = await res.json();
-    console.log(res);
 
     data.forEach(task => {
         tasks.push(task);

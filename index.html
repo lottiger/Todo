@@ -9,28 +9,19 @@
 </head>
 <body>
     <div class="wrapper">
-       
         <form class="form">
             <input class="input-task" type="text" placeholder="Add a new task">
-            <button class="add-btn"><i class="fa solid fa-plus"></i></button>
+            <button class="add-btn" aria-label="Add"><i class="fa solid fa-plus"></i></button>
              <div class="error-msg show-error">Ops, you forgot to type in a task!</div>
-            <ul class="output">
-                <!-- <li>
-                    <span class="task">Task 1</span>
-                    <button class="check-btn"><i class="fa-solid fa-check"></i></button>
-                    <button class="delete-btn"><i class="fa-solid fa-trash-can"></i></button>
-                </li> -->
-                
-            </ul>
-            
+            </form>
+                <ul class="output"></ul>
             <div class="modal">
                 <div class="modal-content">
                     <h1>You need to complete your task</h1>
-                    <button class="close-btn"><i class="fa-solid fa-xmark"></i></button>
+                    <button class="close-btn" aria-label="Close"><i class="fa-solid fa-xmark"></i></button>
                 </div>
-
             </div>
-        </form>
+        
     </div>
     <script src="script.js"></script>
 </body>
