@@ -35,7 +35,7 @@ function createTaskElement(taskTitle, taskId) {
         // Toggle the completed status of the task
         tasks[taskIndex].completed = !tasks[taskIndex].completed;
     
-        const res = await fetch(`https://js1-todo-api.vercel.app/api/todos/${taskId}?apikey=f1e85d3b-f2f3-43fb-b1dc-a4e38c451913`, {
+        const res = await fetch(`http://localhost:8080/api/todos/${taskId}`, {
             method: 'PUT',
             headers: {
                 'Content-type': 'application/json',
@@ -95,7 +95,7 @@ function createTaskElement(taskTitle, taskId) {
             return;
         }
         
-        const res = await fetch(`https://js1-todo-api.vercel.app/api/todos/${taskId}?apikey=f1e85d3b-f2f3-43fb-b1dc-a4e38c451913`, {
+        const res = await fetch(`http://localhost:8080/api/todos/${taskId}`, {
             method: 'DELETE',
         });
 
@@ -129,8 +129,11 @@ function createTaskElement(taskTitle, taskId) {
         return;   
     }
 
-    const response = await fetch('https://js1-todo-api.vercel.app/api/todos?apikey=f1e85d3b-f2f3-43fb-b1dc-a4e38c451913', {
-        method: 'POST',
+    const response = await fetch('http://localhost:8080/api/todos', {
+    
+    // 
+    
+    method: 'POST',
         headers: {
             'Content-type': 'application/json',
         },
@@ -158,7 +161,7 @@ function createTaskElement(taskTitle, taskId) {
 });
 
     const getTasks = async () => {
-    const res = await fetch('https://js1-todo-api.vercel.app/api/todos?apikey=f1e85d3b-f2f3-43fb-b1dc-a4e38c451913');
+    const res = await fetch('http://localhost:8080/api/todos/')
 
     if (res.status !== 200) {
         console.log('Error fetching data');
@@ -168,7 +171,7 @@ function createTaskElement(taskTitle, taskId) {
 
     data.forEach(task => {
         tasks.push(task);
-        const taskElement = createTaskElement(task.title, task._id);
+        const taskElement = createTaskElement(task.title, task._id)
        
         if (task.completed) {
             taskElement.querySelector('.list-item').style.textDecoration = 'line-through';
